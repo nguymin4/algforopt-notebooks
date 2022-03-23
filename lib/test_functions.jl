@@ -1,4 +1,4 @@
-module test_functions
+module TestFunctions
 
 function rosenbrock(a::Real, b::Real, c = 1::Real)
   f(x::Vector{Float64}) = (a - x[1])^2 + b * (c * x[2] - x[1]^2)^2
