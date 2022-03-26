@@ -88,6 +88,12 @@ git-tree-sha1 = "215a9aa4a1f23fbd05b92769fdd62559488d70e9"
 uuid = "fa961155-64e5-5f13-b03f-caf6b980ea82"
 version = "0.4.1"
 
+[[deps.CSTParser]]
+deps = ["Tokenize"]
+git-tree-sha1 = "b66abc140f8b90a1d6bc7bfad5c80070f8c1ddc6"
+uuid = "00ebfdb7-1f24-5e51-bd34-a7502290713f"
+version = "3.3.3"
+
 [[deps.Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
 git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
@@ -177,6 +183,12 @@ deps = ["ColorTypes", "FixedPointNumbers", "Reexport"]
 git-tree-sha1 = "417b0ed7b8b838aa6ca0a87aadf1bb9eb111ce40"
 uuid = "5ae59095-9a9b-59fe-a467-6f913c188581"
 version = "0.12.8"
+
+[[deps.CommonMark]]
+deps = ["Crayons", "JSON", "URIs"]
+git-tree-sha1 = "4cd7063c9bdebdbd55ede1af70f3c2f48fab4215"
+uuid = "a80b9123-70ca-4bc0-993e-6e3bcb318db6"
+version = "0.8.6"
 
 [[deps.CommonSubexpressions]]
 deps = ["MacroTools", "Test"]
@@ -749,6 +761,12 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "b53380851c6e6664204efb2e62cd24fa5c47e4ba"
 uuid = "aacddb02-875f-59d6-b918-886e6ef4fbf8"
 version = "2.1.2+0"
+
+[[deps.JuliaFormatter]]
+deps = ["CSTParser", "CommonMark", "DataStructures", "Pkg", "Tokenize"]
+git-tree-sha1 = "7a6717e8055dc3ee240c8d44668e5908d40efd2a"
+uuid = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
+version = "0.22.7"
 
 [[deps.JuliaInterpreter]]
 deps = ["CodeTracking", "InteractiveUtils", "Random", "UUIDs"]
@@ -1581,6 +1599,11 @@ deps = ["OffsetArrays"]
 git-tree-sha1 = "5683455224ba92ef59db72d10690690f4a8dc297"
 uuid = "06e1c1a7-607b-532d-9fad-de7d9aa2abac"
 version = "0.3.1"
+
+[[deps.Tokenize]]
+git-tree-sha1 = "0952c9cee34988092d73a5708780b3917166a0dd"
+uuid = "0796e94c-ce3b-5d07-9a54-7f471281c624"
+version = "0.5.21"
 
 [[deps.TranscodingStreams]]
 deps = ["Random", "Test"]

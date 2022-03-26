@@ -1,9 +1,6 @@
 module FirstOrderMethods
 
-export optimize,
-    DescentMethod,
-    GradientDescent,
-    Momentum
+export optimize, DescentMethod, GradientDescent, Momentum
 
 include("types.jl")
 include("gradient_descent.jl")
