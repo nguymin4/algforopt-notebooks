@@ -4,7 +4,7 @@ include("../lib/test_functions.jl")
 import .TestFunctions: rosenbrock
 
 include("../lib/FirstOrderMethods/FirstOrderMethods.jl")
-import .FirstOrderMethods: optimize, DescentMethod, GradientDescent, Momentum
+import .FirstOrderMethods: optimize, DescentMethod, GradientDescent, Momentum, NesterovMomentum
 
 plt.plotlyjs()
 
@@ -12,7 +12,7 @@ function plot_contour!(plot, f, xdomain, ydomain)
     X = repeat(reshape(xdomain, 1, :), length(ydomain), 1)
     Y = repeat(ydomain, 1, length(xdomain))
     Z = map((x, y) -> f([x, y]), X, Y)
-    return plt.contour!(plot, xdomain, ydomain, Z; levels=1:80:400, colorbar=false)
+    return plt.contour!(plot, xdomain, ydomain, Z; levels=1:80:400, colorbar=false, color=:ice)
 end
 
 function plot_optimize_process!(plot, method::DescentMethod, f, ∇f, x0)
@@ -28,9 +28,10 @@ function run_example()
     ydomain = range(-0.5, 2, 150)
     x0 = [-2, 1.5]
 
-    plot = plt.plot(; size=(800, 400))
+    plot = plt.plot(; size=(800, 400), palette=:seaborn_muted)
     plot_contour!(plot, f, xdomain, ydomain)
-    plot_optimize_process!(plot, GradientDescent(3e-4), f, ∇f, x0)
+    # plot_optimize_process!(plot, GradientDescent(3e-4), f, ∇f, x0)
     plot_optimize_process!(plot, Momentum(3e-4, 0.9, zeros(2)), f, ∇f, x0)
+    plot_optimize_process!(plot, NesterovMomentum(2e-4, 0.92, zeros(2)), f, ∇f, x0)
     return display(plot)
 end
