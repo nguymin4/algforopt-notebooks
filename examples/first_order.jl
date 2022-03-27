@@ -4,7 +4,7 @@ include("../lib/test_functions.jl")
 import .TestFunctions: rosenbrock
 
 include("../lib/FirstOrderMethods/FirstOrderMethods.jl")
-import .FirstOrderMethods: optimize, Adagrad, DescentMethod, GradientDescent, Momentum, NesterovMomentum
+using .FirstOrderMethods
 
 plt.plotlyjs()
 
@@ -32,7 +32,8 @@ function run_example()
     plot_contour!(plot, f, xdomain, ydomain)
     # plot_optimize_process!(plot, GradientDescent(3e-4), f, ∇f, x0)
     # plot_optimize_process!(plot, Momentum(3e-4, 0.9, zeros(2)), f, ∇f, x0)
-    # plot_optimize_process!(plot, NesterovMomentum(2e-4, 0.92, zeros(2)), f, ∇f, x0)
-    plot_optimize_process!(plot, Adagrad(0.5, 1e-8, zeros(2)), f, ∇f, x0)
+    plot_optimize_process!(plot, NesterovMomentum(2e-4, 0.92, zeros(2)), f, ∇f, x0)
+    # plot_optimize_process!(plot, Adagrad(0.5, 1e-8, zeros(2)), f, ∇f, x0)
+    plot_optimize_process!(plot, RMSProp(0.65, 0.45, 1e-8, zeros(2)), f, ∇f, x0)
     return display(plot)
 end
