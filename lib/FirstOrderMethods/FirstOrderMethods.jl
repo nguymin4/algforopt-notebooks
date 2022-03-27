@@ -1,8 +1,9 @@
 module FirstOrderMethods
 
-export optimize, DescentMethod, Adagrad, GradientDescent, Momentum, NesterovMomentum, RMSProp
+export optimize, DescentMethod, Adadelta, Adagrad, GradientDescent, Momentum, NesterovMomentum, RMSProp
 
 include("types.jl")
+include("adadelta.jl")
 include("adagrad.jl")
 include("gradient_descent.jl")
 include("momentum.jl")
