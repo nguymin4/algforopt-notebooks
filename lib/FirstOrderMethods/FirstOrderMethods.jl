@@ -7,6 +7,7 @@ export optimize,
     Adam,
     GradientDescent,
     HyperGradientDescent,
+    HyperNesterovMomentum,
     Momentum,
     NesterovMomentum,
     RMSProp
@@ -17,6 +18,7 @@ include("adagrad.jl")
 include("adam.jl")
 include("gradient_descent.jl")
 include("hyper_gradient_descent.jl")
+include("hyper_nesterov.jl")
 include("momentum.jl")
 include("nesterov_momentum.jl")
 include("rmsprop.jl")
