@@ -37,5 +37,6 @@ function run_example()
     # plot_optimize_process!(plot, RMSProp(0.65, 0.45, 1e-8, zeros(2)), f, ∇f, x0)
     # plot_optimize_process!(plot, Adadelta(0.8, 0.8, 1e-3, zeros(2), zeros(2)), f, ∇f, x0)
     plot_optimize_process!(plot, Adam(α=0.8, γs=0.9, γv=0.9, s=zeros(2), v=zeros(2)), f, ∇f, x0)
+    plot_optimize_process!(plot, HyperGradientDescent(4e-4, 8e-13, zeros(2)), f, ∇f, x0)
     return display(plot)
 end
