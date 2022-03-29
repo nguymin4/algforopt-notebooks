@@ -23,5 +23,5 @@ Once the repo is cloned, one can set up the required packages from the terminal
 julia --project=. -e 'using Pkg; pkg"instantiate"'
 ```
 
-Julia notebooks are supported by [IJulia](https://github.com/JuliaLang/IJulia.jl) and they can be opened by the jupyter lab or VSCode.
+**Note**: Running notebook in VSCode doesn't require [IJulia](https://github.com/JuliaLang/IJulia.jl) to be installed.
 

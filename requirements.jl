@@ -10,7 +10,6 @@ dependencies = [
   "Distributions",
   "ExprRules",
   "ForwardDiff",
-  "IJulia",
   "ImageMagick",
   "IterTools",
   "LightGraphs",
