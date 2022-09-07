@@ -1,6 +1,6 @@
-using Pkg
+import Pkg
 
-Pkg.add(PackageSpec(url="https://github.com/sisl/Vec.jl.git"))
+Pkg.add(Pkg.PackageSpec(name="Vec", url="https://github.com/sisl/Vec.jl.git"))
 
 dependencies = [
   "ColorSchemes",
@@ -19,11 +19,14 @@ dependencies = [
   "Optim",
   "PGFPlots",
   "Parameters",
+  "Plots",
+  "PlotlyJS",
   "Polynomials",
   "Primes",
   "Printf",
   "QuadGK",
   "Random",
+  "Revise",
   "Sobol",
   "SpecialFunctions",
   "Statistics",
