@@ -9,6 +9,13 @@ function ackley(a=20.0, b=0.2, c=2π)
     return f
 end
 
+function michalewicz(m=10.0)
+    function f(x::Vector{Float64})
+        return -sum(sin(v) * (sin(i * v^2 / π))^(2m) for (i, v) in enumerate(x))
+    end
+    return f
+end
+
 function rosenbrock(a::Real, b::Real, c=1::Real)
     f(x::Vector{Float64}) = (a - x[1])^2 + b * (c * x[2] - x[1]^2)^2
     function ∇f(x::Vector{Float64})
