@@ -4,11 +4,12 @@ using Random: Random
 using Distributions: Distributions
 
 include("../lib/test_functions.jl")
-import .TestFunctions: michalewicz, ackley, wheeler
+import .TestFunctions: michalewicz, ackley, wheeler, branin
 
-f = michalewicz(10)
+f = michalewicz(2)
 # f = ackley()
 # f, ∇f = wheeler(1.5)
+# f = branin(;a=1e-2, r=0.6, s=1.0)
 
 xdomain = LinRange(-5, 5, 400)
 ydomain = LinRange(-5, 5, 400)
@@ -159,19 +160,27 @@ function visualize_particle_swarm_optimization_3D(
     histories;
     animation_interval=24,
     trajectory_tail=50,
-    particle_color=:green,
-    plot_size=(600, 600, 600),
+    particle_color=:white,
+    plot_size=(600, 600),
     record_file=nothing,
 )
+    zdomain = [f([x, y]) for x in xdomain, y in ydomain]
     figure, ax = surface(
         xdomain,
         ydomain,
-        [f([x, y]) for x in xdomain, y in ydomain];
+        zdomain;
+        colormap=:viridis,
+        # transparency=true,
         shading=true,
-        # colormap=:vik,
-        axis=(; type=Axis3, elevation=0.3π, protrusions=(0, 0, 0, 40)),
+        figure=(;size=plot_size),
+        axis=(;
+            type=Axis3,
+            viewmode=:fit,
+            elevation=0.3π,
+            protrusions=(0, 0, 0, 40),
+            limits=(extrema(xdomain)..., extrema(ydomain)..., minimum(zdomain) - 1, maximum(zdomain) + 1)),
     )
-    resize!(figure.scene, plot_size)
+    # resize!(figure.scene, plot_size...)
 
     # Initialize particles and trajectories
     particles = Observable([Point3f([p.x[1], p.x[2], f(p.x)]) for p in histories[1]])
@@ -189,7 +198,7 @@ function visualize_particle_swarm_optimization_3D(
     c = to_color(particle_color)
     tail_colors = [RGBAf(c.r, c.g, c.b, (i / trajectory_tail)^4) for i in 1:trajectory_tail]
     for trajectory in trajectories
-        lines!(ax, trajectory; linewidth=4, color=tail_colors, fxaa=true)
+        lines!(ax, trajectory; linewidth=1.5, color=tail_colors, fxaa=true, transparency=true, depth_shift=-1.0f-4)
     end
 
     function animate(after_update)
@@ -225,14 +234,26 @@ end
 
 set_theme!(theme_black())
 
-visualize_particle_swarm_optimization_2D(
+# visualize_particle_swarm_optimization_2D(
+#     f,
+#     xdomain,
+#     ydomain,
+#     histories;
+#     animation_interval=42,
+#     trajectory_tail=100,
+#     record_file="./experiments/docs/pso_michalewicz.mkv",
+#     particle_color=:pink,
+#     plot_size=(2560, 1440),
+# )
+
+visualize_particle_swarm_optimization_3D(
     f,
     xdomain,
     ydomain,
     histories;
     animation_interval=42,
-    trajectory_tail=100,
-    record_file="./experiments/docs/pso_michalewicz.mkv",
-    particle_color=:pink,
-    plot_size=(2560, 1440),
+    trajectory_tail=20,
+    particle_color=:white,
+    plot_size=(3840, 2160),
+    record_file="./tmp/pso_michalewicz_3d.mkv",
 )
