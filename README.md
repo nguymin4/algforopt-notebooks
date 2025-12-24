@@ -5,10 +5,17 @@ These notebooks were generated from the Algorithms for Optimization source code.
 We provide these notebooks to aid with the development of lectures and understanding the material, with the hope that you find it useful.
 
 ## Installation
-All dependencies are installed using `Julia 1.8`.
+All dependencies are installed using `Julia >= 1.8 <= 1.10`.
 
 [Julia can be installed here](https://julialang.org/downloads/)
 or highly recommended [Juliaup - Julia version manager](https://github.com/JuliaLang/juliaup)
+
+```bash
+juliaup add lts
+
+# Set the version for this folder specifically
+juliaup override set lts
+```
 
 ### Prerequisites
 #### PGFPLots
@@ -32,6 +39,13 @@ Once the repo is cloned, one can set up the required packages from the terminal
 ```bash
 # Initialize project. All dependencies are installed
 julia --project=. -e 'using Pkg; pkg"instantiate"'
+```
+
+### Update dependencies
+```julia
+using Pkg
+Pkg.activate(".")
+include("requirements.jl")
 ```
 
 ## Running
